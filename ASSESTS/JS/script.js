@@ -353,13 +353,13 @@ function RemoveCart(removeId){
     if (sameQuantity.quantity > 1) {
         sameQuantity.quantity--;
         total = total - Number(sameQuantity.price);
-        count--;  // Decrement count by 1 since we removed one quantity
+        count--;  
     } else {
         total = total - Number(sameQuantity.price);
         cart = cart.filter((r) => {
             return r.id != removeId
         });
-        count--;  // Decrement count by 1 since we removed the entire product
+        count--;  
     }
 
     let removeCartSound = document.getElementById("removeVoice");

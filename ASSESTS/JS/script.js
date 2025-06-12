@@ -346,30 +346,27 @@ function DisplayCart(gettingCart){
 DisplayCart(cart)
 
 function RemoveCart(removeId){
-let sameQuantity=cart.find((s)=>{
-   return s.id==removeId
-})
+    let sameQuantity = cart.find((s) => {
+        return s.id == removeId
+    });
 
-if(sameQuantity.quantity>1){
-    sameQuantity.quantity--
-     total=total-Number(sameQuantity.price) 
-}
-else{
-    cart=cart.filter((r)=>{
-    total=Number(sameQuantity.price)-total
-    return r.id!=removeId
-     
-    
-})
- 
-}
-let removeCartSound=document.getElementById("removeVoice");
-removeCartSound.play()
-DisplayCart(cart)
-count--;
-CartCount();
+    if (sameQuantity.quantity > 1) {
+        sameQuantity.quantity--;
+        total = total - Number(sameQuantity.price);
+        count--;  // Decrement count by 1 since we removed one quantity
+    } else {
+        total = total - Number(sameQuantity.price);
+        cart = cart.filter((r) => {
+            return r.id != removeId
+        });
+        count--;  // Decrement count by 1 since we removed the entire product
+    }
 
-document.getElementById("totalprice").innerHTML=`TotalPrice: ${total}`
+    let removeCartSound = document.getElementById("removeVoice");
+    removeCartSound.play();
+    DisplayCart(cart);
+    CartCount();
+    document.getElementById("totalprice").innerHTML = `TotalPrice: ${total}`;
 }
 
 // FUNCTION FOR SEARCH FILTER

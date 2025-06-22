@@ -44,7 +44,7 @@ body{
     transition: 2s;
 } 
 .nav-link:hover::before{
-    height: 2px;
+    /* height: 2px; */
     width: 100%;
     transition: 2s;
     border-radius: 10px;
